@@ -4,7 +4,7 @@ import org.litepal.crud.DataSupport;
 
 /**
  * Created by one on 2018/11/28.
- * 描述：TODO
+ * 描述：县级
  */
 
 public class County extends DataSupport {

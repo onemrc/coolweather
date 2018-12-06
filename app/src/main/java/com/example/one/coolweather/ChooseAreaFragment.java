@@ -3,9 +3,11 @@ package com.example.one.coolweather;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +34,8 @@ import java.util.List;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
+
+import static org.litepal.LitePalBase.TAG;
 
 
 /**
@@ -150,8 +154,8 @@ public class ChooseAreaFragment extends Fragment {
             listView.setSelection(0);
             currentLevel = LEVEL_PROVINCE;
         } else {
-//            String address = ApiUtil.cityAddress+"?key="+ApiUtil.key;
-            String address = "http://guolin.tech/api/china";
+            String address = ApiUtil.cityAddress+"?key="+ApiUtil.key;
+//            String address = "http://guolin.tech/api/chisna";
             queryFormServer(address, "province");
         }
     }
@@ -168,7 +172,7 @@ public class ChooseAreaFragment extends Fragment {
         //发送请求
         HttpUtil.sendOkHttpRequest(address, new okhttp3.Callback() {
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
+            public void onResponse(Call call,final Response response) throws IOException {
                 String responseText = response.body().string();
                 boolean result = false;
                 if ("province".equals(type)) {
