@@ -1,7 +1,12 @@
 package com.example.one.coolweather.util;
 
-import java.io.IOException;
+import android.util.Log;
 
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
+
+import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -19,9 +24,13 @@ public class HttpUtil {
      * @param address
      * @param callback
      */
-    public static void sendOkHttpRequest(String address, Callback callback){
+    public static void sendOkHttpRequest(String address,Callback callback){
         OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder().url(address).get().build();
+
+        client.newBuilder().connectTimeout(10, TimeUnit.MINUTES).readTimeout(20,TimeUnit.MINUTES).build();
+
+        Request request = new Request.Builder().url(address).build();
         client.newCall(request).enqueue(callback);
     }
+
 }

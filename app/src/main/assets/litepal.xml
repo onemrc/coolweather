@@ -5,6 +5,7 @@
     <list>
         <mapping class="com.example.one.coolweather.db.Province"/>
         <mapping class="com.example.one.coolweather.db.City"/>
-        <mapping class="com.example.one.coolweather.db.County"/>
+        <!--<mapping class="com.example.one.coolweather.db.County"/>-->
+        <mapping class="com.example.one.coolweather.db.District"/>
     </list>
 </litepal>
