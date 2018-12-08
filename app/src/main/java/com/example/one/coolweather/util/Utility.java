@@ -3,16 +3,20 @@ package com.example.one.coolweather.util;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.alibaba.fastjson.JSON;
 import com.example.one.coolweather.db.City;
 
 import com.example.one.coolweather.db.District;
 import com.example.one.coolweather.db.Province;
+import com.example.one.coolweather.gson.Weather;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.litepal.crud.DataSupport;
+
+import java.util.List;
 
 /**
  * Created by one on 2018/11/28.
@@ -149,5 +153,31 @@ public class Utility {
             }
         }
         return false;
+    }
+
+    /**
+     * 解析JSON数据 成 Weather实体类
+     * @param response 相应信息
+     * @return Weather
+     */
+    public static Weather handleWeatherResponse(String response){
+        try{
+            JSONObject jsonObject = new JSONObject(response);
+            JSONObject result = jsonObject.getJSONObject("result");
+//            JSONArray jsonArray = jsonObject.getJSONObject("result").getJSONArray("future");
+            String weatherContent = result.toString();
+
+
+
+
+            //TODO Debug
+            Weather weather = new Gson().fromJson(weatherContent,Weather.class);
+
+
+            return weather;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
     }
 }

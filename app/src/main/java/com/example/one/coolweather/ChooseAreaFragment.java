@@ -2,6 +2,7 @@ package com.example.one.coolweather;
 
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -119,6 +120,13 @@ public class ChooseAreaFragment extends Fragment {
                     selectCity = cityList.get(position);
 //                    queryCounties();
                     queryDistrict();
+                }else if (currentLevel == LEVEL_DISTRICT){
+                    String districtName = districtList.get(position).getName();
+                    Intent intent = new Intent(getActivity(),WeatherActivity.class);
+
+                    intent.putExtra("districtName",districtName);
+                    startActivity(intent);
+                    getActivity().finish();
                 }
             }
         });

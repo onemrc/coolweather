@@ -16,21 +16,34 @@
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/comfort_text"
+        android:id="@+id/dressing_advice_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#fff"
-        android:textSize="15dp" />
+        android:textSize="15dp"
+        android:layout_marginTop="30dp"/>
+
+
 
     <TextView
         android:id="@+id/car_wash_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#fff"
-        android:textSize="15dp" />
+        android:textSize="15dp"
+        android:layout_marginTop="30dp"/>
 
     <TextView
-        android:id="@+id/sport_text"
+        android:id="@+id/travel_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#fff"
+        android:textSize="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"/>
+
+    <TextView
+        android:id="@+id/comfort_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#fff"
