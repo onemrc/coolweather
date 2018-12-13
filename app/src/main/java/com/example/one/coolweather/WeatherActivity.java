@@ -78,8 +78,10 @@ public class WeatherActivity extends AppCompatActivity {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         String weatherString =  preferences.getString("weather",null);
+        String newDistrict =  preferences.getString("newDistrict",null);
+        String oldDistrict = getIntent().getStringExtra("districtName");
 
-        if (weatherString != null){
+        if (weatherString != null && oldDistrict.equals(newDistrict)){
             //从缓存直接解析天气数据
             Weather weather = Utility.handleWeatherResponse(weatherString);
 
@@ -123,9 +125,11 @@ public class WeatherActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         if (weather != null){
+
                             SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(WeatherActivity.this).edit();
 
                             editor.putString("weather",responseText);
+                            editor.putString("newDistrict",district);
                             editor.apply();//执行
 
                             //显示天气
